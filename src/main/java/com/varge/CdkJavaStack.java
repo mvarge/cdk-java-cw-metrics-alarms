@@ -1,8 +1,9 @@
-package com.myorg;
+package com.varge;
 
 import software.amazon.awscdk.core.Construct;
 import software.amazon.awscdk.core.Stack;
 import software.amazon.awscdk.core.StackProps;
+
 
 public class CdkJavaStack extends Stack {
     public CdkJavaStack(final Construct scope, final String id) {
@@ -13,5 +14,6 @@ public class CdkJavaStack extends Stack {
         super(scope, id, props);
 
         // The code that defines your stack goes here
+
     }
 }

@@ -30,7 +30,7 @@
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>3.0.0</version>
                 <configuration>
-                    <mainClass>com.myorg.CdkJavaApp</mainClass>
+                    <mainClass>com.varge.CdkJavaApp</mainClass>
                 </configuration>
             </plugin>
         </plugins>
@@ -41,6 +41,12 @@
         <dependency>
             <groupId>software.amazon.awscdk</groupId>
             <artifactId>core</artifactId>
+            <version>${cdk.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>software.amazon.awscdk</groupId>
+            <artifactId>cloudwatch</artifactId>
             <version>${cdk.version}</version>
         </dependency>
 
