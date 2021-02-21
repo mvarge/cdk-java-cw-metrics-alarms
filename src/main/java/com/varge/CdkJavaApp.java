@@ -21,7 +21,7 @@ public class CdkJavaApp {
         region = (region == null) ? System.getenv("CDK_DEFAULT_REGION") : region;
 
         StsClientHelper stsActivator = StsClientHelper.builder()
-                .arnRole("arn:aws:iam::575518221509:role/CloudWatchStsVargemRole")
+                .arnRole("arn:aws:iam::<account>:role/<RoleName>")
                 .roleSessionName("session_x")
                 .build();
 
