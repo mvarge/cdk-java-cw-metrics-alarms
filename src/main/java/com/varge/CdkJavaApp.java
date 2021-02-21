@@ -34,16 +34,14 @@ public class CdkJavaApp {
                 .build();
     }
 
-    private static void cloudwatchMetrics(CloudWatchImpl cwExecutor) {
+    private static void cloudwatchMetrics() {
+        cwExecutor = CloudWatchImpl.getInstance();
         cwExecutor.listMetrics();
     }
 
     public static void main(final String[] args) {
 
-        Injector injector = Guice.createInjector(new CloudwatchModule());
-        cwExecutor = injector.getInstance(CloudWatchImpl.class);
-
-        cwExecutor.listMetrics();
+        cloudwatchMetrics();
 
         App app = new App();
 
