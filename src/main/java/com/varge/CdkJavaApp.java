@@ -1,9 +1,6 @@
 package com.varge;
 
-import com.google.inject.Guice;
-import com.google.inject.Injector;
-import com.varge.cloudwatch.CloudWatchImpl;
-import com.varge.modules.CloudwatchModule;
+import com.varge.cloudwatch.CloudwatchImpl;
 import com.varge.utils.StsClientHelper;
 import software.amazon.awscdk.core.App;
 import software.amazon.awscdk.core.Environment;
@@ -14,7 +11,7 @@ import software.amazon.awssdk.services.sts.model.Credentials;
 public class CdkJavaApp {
 
     public final static Region REGION = Region.EU_WEST_1;
-    private static CloudWatchImpl cwExecutor;
+    private static CloudwatchImpl cwExecutor;
 
     private static Environment envWithRegion(String account, String region) {
         account = (account == null) ? System.getenv("CDK_DEFAULT_ACCOUNT") : account;
@@ -35,7 +32,7 @@ public class CdkJavaApp {
     }
 
     private static void cloudwatchMetrics() {
-        cwExecutor = CloudWatchImpl.getInstance();
+        cwExecutor = CloudwatchImpl.getInstance();
         cwExecutor.listMetrics();
     }
 
