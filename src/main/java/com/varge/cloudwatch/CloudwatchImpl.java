@@ -39,7 +39,7 @@ public class CloudwatchImpl {
                 .namespace("VargemTest")
                 .metricData(MetricDatum.builder()
                         .metricName("MissingData")
-                        .value(2.0)
+                        .value(4.0)
                         .build())
                 .build());
 
