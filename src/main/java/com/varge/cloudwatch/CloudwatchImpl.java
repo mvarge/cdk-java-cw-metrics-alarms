@@ -6,8 +6,7 @@ import com.google.inject.Injector;
 import com.google.inject.name.Named;
 import com.varge.modules.CloudwatchModule;
 import software.amazon.awssdk.services.cloudwatch.CloudWatchClient;
-import software.amazon.awssdk.services.cloudwatch.model.ListMetricsRequest;
-import software.amazon.awssdk.services.cloudwatch.model.ListMetricsResponse;
+import software.amazon.awssdk.services.cloudwatch.model.*;
 
 public class CloudwatchImpl {
 
@@ -32,6 +31,19 @@ public class CloudwatchImpl {
 
         System.out.println(response.toString());
         return response;
+    }
+
+    public void sendMetric() {
+        PutMetricDataResponse response =
+                cloudWatchClient.putMetricData(PutMetricDataRequest.builder()
+                .namespace("VargemTest")
+                .metricData(MetricDatum.builder()
+                        .metricName("MissingData")
+                        .value(2.0)
+                        .build())
+                .build());
+
+        System.out.println(response.toString());
     }
 
     public static CloudwatchImpl getInstance() {

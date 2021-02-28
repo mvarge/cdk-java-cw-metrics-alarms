@@ -1,12 +1,10 @@
 package com.varge;
 
 import com.varge.cloudwatch.CloudwatchImpl;
-import com.varge.utils.StsClientHelper;
 import software.amazon.awscdk.core.App;
 import software.amazon.awscdk.core.Environment;
 import software.amazon.awscdk.core.StackProps;
 import software.amazon.awssdk.regions.Region;
-import software.amazon.awssdk.services.sts.model.Credentials;
 
 public class CdkJavaApp {
 
@@ -17,14 +15,6 @@ public class CdkJavaApp {
         account = (account == null) ? System.getenv("CDK_DEFAULT_ACCOUNT") : account;
         region = (region == null) ? System.getenv("CDK_DEFAULT_REGION") : region;
 
-        StsClientHelper stsActivator = StsClientHelper.builder()
-                .arnRole("arn:aws:iam::<account>:role/<RoleName>")
-                .roleSessionName("session_x")
-                .build();
-
-        Credentials credentials = stsActivator.getStsCredentials();
-        System.out.println(credentials.accessKeyId() + "\n" + credentials.secretAccessKey());
-
         return new Environment.Builder()
                 .account(account)
                 .region(region)
@@ -34,6 +24,7 @@ public class CdkJavaApp {
     private static void cloudwatchMetrics() {
         cwExecutor = CloudwatchImpl.getInstance();
         cwExecutor.listMetrics();
+        cwExecutor.sendMetric();
     }
 
     public static void main(final String[] args) {
